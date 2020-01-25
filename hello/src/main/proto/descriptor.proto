@@ -5,20 +5,20 @@ option java_package = "io.grpc.examples.helloworld";
 option java_outer_classname = "HelloWorldProto";
 option objc_class_prefix = "HLW";
 
-package helloworld;
+package io.jackson.oliveira.grpc.playground;
 
 // The greeting service definition.
-service Greeter {
+service Echo {
   // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  rpc SaySomething (EchoRequest) returns (EchoReply) {}
 }
 
 // The request message containing the user's name.
-message HelloRequest {
-  string name = 1;
+message EchoRequest {
+  string message = 1;
 }
 
 // The response message containing the greetings
-message HelloReply {
+message EchoReply {
   string message = 1;
 }

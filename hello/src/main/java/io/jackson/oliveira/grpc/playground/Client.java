@@ -5,23 +5,23 @@ import java.util.concurrent.TimeUnit;
 import io.grpc.Channel;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
-import io.grpc.examples.helloworld.GreeterGrpc;
-import io.grpc.examples.helloworld.HelloReply;
-import io.grpc.examples.helloworld.HelloRequest;
+import io.grpc.examples.helloworld.EchoGrpc;
+import io.grpc.examples.helloworld.EchoReply;
+import io.grpc.examples.helloworld.EchoRequest;
 
 public class Client {
 
-	private final GreeterGrpc.GreeterBlockingStub blockingStub;
+	private final EchoGrpc.EchoBlockingStub blockingStub;
 
 	public Client(Channel channel) {
-		blockingStub = GreeterGrpc.newBlockingStub(channel);
+		blockingStub = EchoGrpc.newBlockingStub(channel);
 	}	
 
 	public void greet(String somethingToSay) {
 		System.out.println("Will try to greet " + somethingToSay + " ...");
-		HelloRequest request = HelloRequest.newBuilder().setName(somethingToSay).build();
+		EchoRequest request = EchoRequest.newBuilder().setMessage(somethingToSay).build();
 		
-		HelloReply response =  blockingStub.sayHello(request);
+		EchoReply response =  blockingStub.saySomething(request);
 		
 		System.out.println("Reply from the server: " + response.getMessage());
 	}

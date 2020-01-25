@@ -1,15 +1,15 @@
 package io.jackson.oliveira.grpc.playground;
 
-import io.grpc.examples.helloworld.HelloRequest;
-import io.grpc.examples.helloworld.GreeterGrpc.GreeterImplBase;
-import io.grpc.examples.helloworld.HelloReply;
+import io.grpc.examples.helloworld.EchoGrpc.EchoImplBase;
+import io.grpc.examples.helloworld.EchoReply;
+import io.grpc.examples.helloworld.EchoRequest;
 import io.grpc.stub.StreamObserver;
 
-public class Service extends GreeterImplBase {
+public class Service extends EchoImplBase {
 
 	@Override
-	public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
-		HelloReply reply =  HelloReply.newBuilder().setMessage("Hello "  + req.getName()).build();
+	public void saySomething(EchoRequest req, StreamObserver<EchoReply> responseObserver) {
+		EchoReply reply =  EchoReply.newBuilder().setMessage("Hello "  + req.getMessage()).build();
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
 	}
