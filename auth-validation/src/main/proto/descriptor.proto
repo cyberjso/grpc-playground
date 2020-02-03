@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "HelloWorldProto";
+option objc_class_prefix = "HLW";
+
+package io.jackson.oliveira.grpc.playground;
+
+// The greeting service definition.
+service Echo {
+  // Sends a greeting
+  rpc SaySomething (EchoRequest) returns (EchoReply) {}
+}
+
+// The request message containing the user's name.
+message EchoRequest {
+  string message = 1;
+}
+
+// The response message containing the greetings
+message EchoReply {
+  string message = 1;
+}
